@@ -3,26 +3,26 @@
 
 
 class Node:
-    """"defines a node"""
+    """"defines  the  node in e class"""
 
     def __init__(self, data, next_node=None):
-        """initializes the node with instance variables"""
+        """initializes the node with instance vars"""
 
         self.data = data
         self.next_node = next_node
 
     @property
     def data(self):
-        """gets data attribute"""
+        """retrieves the attribute of the data """
 
         return (self.__data)
 
     @data.setter
     def data(self, value):
-        """sets data attribute"""
+        """relays the data attribute"""
 
         if not isinstance(value, int):
-            raise TypeError('data must be an integer')
+            raise TypeError('data must be an int')
         self.__data = value
 
     @property
@@ -35,7 +35,7 @@ class Node:
 
     @next_node.setter
     def next_node(self, value):
-        """set value of next node"""
+        """sets the value of next node"""
 
         if (value is not None and not isinstance(value, Node)):
             raise TypeError('next_node must be a Node object')
@@ -64,7 +64,7 @@ class SinglyLinkedList:
     def sorted_insert(self, value):
         """insert in a sorted fashion
         Args:
-            value: what the value will be on the node
+            value:  sets the value of the node
         """
         new = Node(value)
         if not self.head:
