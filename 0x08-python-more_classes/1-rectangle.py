@@ -6,14 +6,7 @@ class Rectangle:
     """this reps a rectangle"""
 
     def __init__(self, width=0, height=0):
-        """Starts this rectangle class
-        Args:
-            width: reps the width of the rectangle
-            height: reps the height of the rectangle
-        Raises:
-            TypeError: if size is not int
-            ValueError: if size is < zero
-        """
+        """Starts this rectangle class"""
         self.width = width
         self.height = height
 
@@ -44,3 +37,11 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        return self.__height * self.__width
+
+    def perimeter(self):
+        if self.__height == 0 or self.__width == 0:
+            return 0
+        return (self.__width * 2) + (self.__height * 2)
