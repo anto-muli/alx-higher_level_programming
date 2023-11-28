@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Rectangle class"""
+"""A rectangle class"""
 
 
 class Rectangle:
-    """defines a rectangle"""
+    """defines the rectangle"""
 
     def __init__(self, width=0, height=0):
-        """Initializes a Rectangle"""
+        """Initializes the Rectangle class"""
         self.width = width
         self.height = height
 
@@ -26,7 +26,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """Gets the height of e rectangle"""
+        """Gets the height of the rectangle"""
         return self.__height
 
     @height.setter
@@ -47,6 +47,7 @@ class Rectangle:
         return (self.__width * 2) + (self.__height * 2)
 
     def __str__(self) -> str:
+        "" Presents a diagram of the rectangle defined for an object""
         if self.__width == 0 or self.__height == 0:
             return ("")
 
@@ -54,5 +55,6 @@ class Rectangle:
 	for column in range(self.__height):
             for row in range(self.__width):
                 rectangle += "#"
-            if column < self.__height - 1:
+        if column < self.__height - 1:
+            rectangle += "\n"
         return (rectangle)
