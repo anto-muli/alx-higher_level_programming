@@ -1,61 +1,102 @@
 #!/usr/bin/python3
-"""Unittests for max_integer([..])."""
-
+"""Unittest with max_integer([..])
+"""
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
-    """Defines unittests for max_integer([..])."""
-
-    def test_ordered_list(self):
-        """Tests an ordered list of integers."""
-        ordered = [1, 2, 3, 4]
-        self.assertEqual(max_integer(ordered), 4)
-
-    def test_unordered_list(self):
-        """Tests an unordered list of integers."""
-        unordered = [1, 2, 4, 3]
-        self.assertEqual(max_integer(unordered), 4)
-
-    def test_max_at_begginning(self):
-        """Tests a list with a beginning max value."""
-        max_at_beginning = [4, 3, 2, 1]
-        self.assertEqual(max_integer(max_at_beginning), 4)
-
     def test_empty_list(self):
-        """Tests empty list."""
-        empty = []
-        self.assertEqual(max_integer(empty), None)
+        """
+        Tests with empty lists
 
-    def test_one_element_list(self):
-        """Tests lists with a single element."""
-        one_element = [7]
-        self.assertEqual(max_integer(one_element), 7)
+        Args:
+            self : Argument
 
-    def test_floats(self):
-        """Test a list of floats."""
-        floats = [1.53, 6.33, -9.123, 15.2, 6.0]
-        self.assertEqual(max_integer(floats), 15.2)
+        """
+        self.assertIsNone(max_integer([]))
 
-    def test_ints_and_floats(self):
-        """Test a list of ints and floats."""
-        ints_and_floats = [1.53, 15.5, -9, 15, 6]
-        self.assertEqual(max_integer(ints_and_floats), 15.5)
+    def test_one_element(self):
+        """
+        Tests with 1 element
 
-    def test_string(self):
-        """Test a string."""
-        string = "Ehoneah"
-        self.assertEqual(max_integer(string), 'r')
+        Args:
+            self : Argument
 
-    def test_list_of_strings(self):
-        """Test a list of strings."""
-        strings = ["Ehoneah", "is", "my", "name"]
-        self.assertEqual(max_integer(strings), "name")
+        """
+        self.assertEqual(max_integer([5]), 5)
 
-    def test_empty_string(self):
-        """Test an empty string."""
-        self.assertEqual(max_integer(""), None)
+    def test_2_elements(self):
+        """
+        Tests with 2 elements
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([5, 2]), 5)
+
+    def test_all_neg_elements(self):
+        """
+        Tests all negative elements without a zero
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([-5, -3, -1, -4, -2]), -1)
+
+    def test_all_neg_with_0(self):
+        """
+        Tests with all negative elements and a 0
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([-5, -3, -1, -4, 0, -2]), 0)
+
+    def test_same_elements_not_max(self):
+        """
+        Tests with multiples that aren't maximum
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([2, 4, 6, 4, 8]), 8)
+
+    def test_same_elements_max(self):
+        """
+        Tests with multiples that are maximum
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([8, 4, 6, 8, 8]), 8)
+
+    def test_all_0(self):
+        """
+        Tests with all zero
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([0, 0, 0, 0, 0]), 0)
+
+    def test_large_numbers(self):
+        """
+        Tests with large numbers
+
+        Args:
+            self : Argument
+
+        """
+        self.assertEqual(max_integer([200000, 450000, 3000000]), 3000000)
+
 
 if __name__ == '__main__':
+
     unittest.main()
