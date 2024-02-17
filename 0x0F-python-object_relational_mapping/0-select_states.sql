@@ -1,25 +1,9 @@
-#!/usr/bin/python3
-"""
-A script that lists all states from the
-database named `hbtn_0e_0_usa`.
-"""
-
-import MySQLdb
-from sys import argv
-
-if __name__ == '__main__':
-    """
-    Accesses the database and gets states
-    names from the database.
-    """
-    db_connect = MySQLdb.connect(
-        host="localhost", user=argv[1], port=3306, passwd=argv[2], db=argv[3])
-
-    db_cursor = db_connect.cursor()
-
-    db_cursor.execute("SELECT * FROM states")
-
-    rows_selected = db_cursor.fetchall()
-
-    for row in rows_selected:
-        print(row)
+-- Create states table in hbtn_0e_0_usa with some data
+CREATE DATABASE IF NOT EXISTS hbtn_0e_0_usa;
+USE hbtn_0e_0_usa;
+CREATE TABLE IF NOT EXISTS states ( 
+    id INT NOT NULL AUTO_INCREMENT, 
+    name VARCHAR(256) NOT NULL,
+    PRIMARY KEY (id)
+);
+INSERT INTO states (name) VALUES ("California"), ("Arizona"), ("Texas"), ("New York"), ("Nevada");
